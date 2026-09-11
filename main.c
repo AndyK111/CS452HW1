@@ -13,11 +13,10 @@ int main() {
   //New deque length test
   Deq d = deq_new();
 
-  void* i1;
-  void* i2;
-  void* i3;
-  void* i4;
-  void* i5;
+  void* i1 = malloc(sizeof(void*));
+  void* i2 = malloc(sizeof(void*));
+  void* i3 = malloc(sizeof(void*));
+  void* i4 = malloc(sizeof(void*));
 
   test(deq_len(d) == 0, "New deque length is zero?");
   deq_head_put(d, i1); //insert one item at head
@@ -127,8 +126,9 @@ int main() {
   test(deq_len(d) == 0, "Deque length correctly 0 after removing i1?");
 
   deq_del(d, 0);
-  d = deq_new();
 
-  deq_head_put(d, i1);
-  deq_tail_put(d, i2);
+  free(i1);
+  free(i2);
+  free(i3);
+  free(i4);
 }
